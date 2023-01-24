@@ -1,0 +1,21 @@
+.Category-title {
+	color: #9400d3;
+	font-weight: bold;
+  }
+  
+.Category-list {
+list-style-position: inside;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+}
+
+.Category-link {
+color: #9400d3;
+font-size: 1em;
+transition: color ease-in 0.1s;
+}
+
+.Category-link:hover {
+color: #8c55a2;
+}
