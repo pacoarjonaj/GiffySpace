@@ -4,11 +4,10 @@
   
 .ListOfGifs {
 	display: grid;
-	min-height: 100vh;
-	grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-	gap: 0 16px;
-	align-items: center;
+	grid-gap: 0 1%;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-template-rows: masonry;
+	min-height: 100vh;
 }
 
 .ListOfGifs-item {

@@ -22,13 +22,12 @@ export default function Home() {
 
 	return (
 		<>
-			<h3 className="App-title">Los gifs más populares</h3>
 			<form onSubmit={handleSubmit}>
+				<button>Buscar</button>
 				<input type='text'
 					onChange={handleChange} 
 					value={keyword} 
 					placeholder='Search a gif here...'/>
-				<button>Buscar</button>
 			</form>
 			<div className="App-main">
 				<div className="App-results">

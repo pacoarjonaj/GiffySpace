@@ -19,7 +19,7 @@ export default function SearchResults ({params}){
 	// const handleNextPage = () => console.log('Next page')
 
 	const debounceHandleNextPage = useCallback(debounce(
-		() => setPage(prevPage => prevPage + 1), 200
+		() => setPage(prevPage => prevPage + 1), 50
 	), [setPage])
 
 	useEffect(function () {
