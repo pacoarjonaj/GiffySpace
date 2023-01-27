@@ -12,19 +12,19 @@ export function useGifs({keyword} = {keyword: null}) {
 	const {gifs, setGifs}= useContext(GifsContext)
 
 	// recuperamos la keyword de localStorage
-	const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'random'
+	const keywordToUse = keyword || JSON.parse(localStorage.getItem('lastKeyword')) || 'dachshund'
 
 	useEffect(function() {
 		setLoading(true)
-		
+	
 		getGifs({ keyword: keywordToUse })
 			.then(gifs => {
 				setGifs(gifs)
 				setLoading(false)
 				// guardamos la keyword en el localStorage
-				localStorage.setItem('lastKeyword', keyword)
+				localStorage.setItem('lastKeyword', JSON.stringify(keyword))
 			})
-	}, [keyword, keywordToUse, setGifs])
+	}, [keyword, setGifs])
 
 
 	useEffect(function() {

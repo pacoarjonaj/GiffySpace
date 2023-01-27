@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { Route } from 'wouter'
+import { Link, Route } from 'wouter'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
 import SearchResults from './pages/SearchResults'
@@ -19,6 +19,9 @@ function App() {
 	}>
 		<div className="App">
 			<section className="App-content">
+				<Link to="/">
+					<p>HOME</p>
+				</Link>
 				<GifsContextProvider>
 					<Route
 						component={Home}
