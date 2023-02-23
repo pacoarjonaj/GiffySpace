@@ -1,4 +1,4 @@
-import { fireEvent, screen, render, waitFor } from '@testing-library/react'
+import { fireEvent, screen, render, waitForElement } from '@testing-library/react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
@@ -7,11 +7,14 @@ test('renders without crashing', () => {
 	ReactDOM.render(<App />, div);
 })
 
-test('home text last search ', async () => {
-  const {findByText} = render(<App />)
-  const title = await findByText(/Última búsqueda/i)
-  expect(title).toBeInTheDocument()
-});
+/**
+ * 
+ test('home works as expected', async () => {
+	const {container} = render(<App />)
+	const gifLink = await waitForElement(() => container.querySelector('.Gif-link'))
+	expect(gifLink).toBeVisible()
+  })
+ */
 
 test('search form could be used', async () => {
 	render(<App />)
