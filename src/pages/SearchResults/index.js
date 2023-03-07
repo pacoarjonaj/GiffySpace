@@ -20,9 +20,6 @@ export default function SearchResults ({params}){
 	
 	useSEO({ description: `Search of ${title}`, title})
 
-	// const handleNextPage = () => setPage(prevPage => prevPage + 1)
-	// const handleNextPage = () => console.log('Next page')
-
 	const debounceHandleNextPage = useCallback(debounce(
 		() => setPage(prevPage => prevPage + 1), 50
 	), [setPage])
