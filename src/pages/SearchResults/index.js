@@ -4,6 +4,8 @@ import Spinner from "components/Spinner"
 import { useGifs } from "hooks/useGifs"
 import useNearScreen from "hooks/useNearScreen"
 import debounce from "just-debounce-it"
+import useSEO from "hooks/useSEO"
+import { Helmet } from "react-helmet"
 
 
 export default function SearchResults ({params}){
@@ -14,6 +16,9 @@ export default function SearchResults ({params}){
 		externalRef: loading ? null : externalRef,
 		once: false
 	})
+	const title = gifs ? `${gifs.length} resultados de ${keyword}` : ''
+	
+	useSEO({ description: `Search of ${title}`, title})
 
 	// const handleNextPage = () => setPage(prevPage => prevPage + 1)
 	// const handleNextPage = () => console.log('Next page')
@@ -30,6 +35,10 @@ export default function SearchResults ({params}){
 		{loading
 		 ? <Spinner/>
 		 : <>
+		 	<Helmet>
+				<title>GIffy | Search of {title}</title>
+				<meta name="description" content={title}></meta>
+			</Helmet>
 		   	<h3 className="App-title">{decodeURI(keyword)}</h3>
 		 	<ListOfGifs gifs={gifs} />
 			<div id="visor" ref={externalRef}></div>
