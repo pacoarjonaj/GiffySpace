@@ -6,11 +6,12 @@ import useNearScreen from "hooks/useNearScreen"
 import debounce from "just-debounce-it"
 import useSEO from "hooks/useSEO"
 import { Helmet } from "react-helmet"
+import SearchForm from "components/SearchForm"
 
 
 export default function SearchResults ({params}){
-	const {keyword} = params
-	const { loading, gifs, setPage} = useGifs({keyword})
+	const {keyword, rating = 'g'} = params
+	const { loading, gifs, setPage} = useGifs({keyword, rating})
 	const externalRef = useRef()
 	const {isNearScreen} = useNearScreen({
 		externalRef: loading ? null : externalRef,
@@ -18,7 +19,7 @@ export default function SearchResults ({params}){
 	})
 	const title = gifs ? `${gifs.length} resultados de ${keyword}` : ''
 	
-	useSEO({ description: `Search of ${title}`, title})
+	useSEO({ description: `${title}`, title})
 
 	const debounceHandleNextPage = useCallback(debounce(
 		() => setPage(prevPage => prevPage + 1), 50
@@ -36,6 +37,10 @@ export default function SearchResults ({params}){
 				<title>GIffy | Search of {title}</title>
 				<meta name="description" content={title}></meta>
 			</Helmet>
+			<header>
+				<SearchForm initialKeyword={keyword} initialRating={rating}/>	
+			</header>
+
 		   	<h3 className="App-title">{decodeURI(keyword)}</h3>
 		 	<ListOfGifs gifs={gifs} />
 			<div id="visor" ref={externalRef}></div>
